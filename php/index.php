@@ -46,10 +46,8 @@
 
 	<div class="container">
 
-	  <h1>Build your LogCfg.txt from a RomRaider Logger Profile</h1>
-
       <form class="form-upload">
-        <h2 class="form-upload-heading">Upload Profile XML</h2>
+        <h3 class="form-upload-heading">Upload RomRaider Profile XML</h3>
         <input type="file" class="input-block-level" placeholder="Profile XML">
         <button class="btn btn-large btn-primary" type="submit">Upload</button>
       </form>
