@@ -40,22 +40,19 @@
 			<span class="icon-bar"></span>
 		  </a>
 		  <a class="brand" href="#">Subaru OpenPort LogCfg Generator</a>
-		  <!-- 
-		  <div class="nav-collapse collapse">
-			<ul class="nav">
-			  <li class="active"><a href="#">Home</a></li>
-			  <li><a href="#about">About</a></li>
-			  <li><a href="#contact">Contact</a></li>
-			</ul>
-		  </div><!--/.nav-collapse -->
 		</div>
 	  </div>
 	</div>
 
 	<div class="container">
 
-	  <h1>Bootstrap starter template</h1>
-	  <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+	  <h1>Build your LogCfg.txt from a RomRaider Logger Profile</h1>
+
+      <form class="form-upload">
+        <h2 class="form-upload-heading">Upload Profile XML</h2>
+        <input type="file" class="input-block-level" placeholder="Profile XML">
+        <button class="btn btn-large btn-primary" type="submit">Upload</button>
+      </form>
 
 	</div> <!-- /container -->
 
