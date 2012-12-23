@@ -41,12 +41,14 @@
 
 	<div class="container">
 		
-		<?php if(isset($_GET['alert'])) : ?>
-		<div class="alert <?= $_GET['alert']['type'] ?: 'alert-warning' ?>">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			<?= $_GET['alert']['msg'] ?>
+		<div id="alert-container">
+			<?php if(isset($_GET['alert'])) : ?>
+			<div class="alert <?= $_GET['alert']['type'] ?: 'alert-warning' ?>">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<?= $_GET['alert']['msg'] ?>
+			</div>
+			<?php endif; ?>
 		</div>
-		<?php endif; ?>
 		
 		<form class="form-horizontal" enctype="multipart/form-data" method="POST" action="generate.php">
 			<fieldset>
@@ -125,8 +127,9 @@
 				success: function(data) {
 					//TODO: populate ECUs
 				},
-				error: function() {
-					//TODO: create alert
+				error: function(jqXHR, textStatus) {
+					var alert = $('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button>' + textStatus + '</div>');
+					$('#alert-container')
 				}
 			});
 		});
