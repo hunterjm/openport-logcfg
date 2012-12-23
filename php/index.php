@@ -66,7 +66,11 @@
 					<div class="controls">
 						<select name="Definition" id="Definition">
 							<option value="">-- Pick Logger Definition --</option>
-							<option>logger_IMP_EN_v100.xml</option>
+							<?php
+								foreach(glob('../misc/loggerdefs/*xml') as $filename) {
+									echo "<option>$filename</option>";
+								}
+							?>
 						</select>
 						<span class="help-block">
 							Which logger definition should be used to generate the file?
