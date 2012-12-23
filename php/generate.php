@@ -272,6 +272,28 @@ foreach($calculatedDefArray as $id => $data) {
 }
 
 // Start/Stop Logging
+$triggerArray = array();
+
+$triggerArray['defogger'] = <<<EOT
+; Start log when defogger_trigger == 1
+conditionrpn = defogger_trigger,1,==
+action = start
+
+; Stop log when defogger_trigger == 0
+conditionrpn = defogger_trigger,0,==
+action = stop
+EOT;
+
+$triggerArray['engine'] = <<<EOT
+; Start log when RPM > 0
+conditionrpn = Engine_Speed(rpm),0,>	
+action = start
+
+; Stop log when RPM = 0
+conditionrpn = Engine_Speed(rpm),0,==
+action = stop
+EOT;
+
 echo <<<EOT
 ;-------------------------TRIGGER-------------------------;
 ; Triggers allow us to start/stop and resume logging to   ;
@@ -286,23 +308,7 @@ echo <<<EOT
 ; the "Defogger Switch" lines and add a ";" to the others ;
 ;---------------------------------------------------------;
 
-; CONFIG 1
-
-conditionrpn = Engine_Speed(rpm),0,>	
-action = start
-
-conditionrpn = Engine_Speed(rpm),0,==
-action = stop
-
-; CONFIG 2
-
-; Start log when defogger_trigger == 1
-;conditionrpn = defogger_trigger,1,==
-;action = start
-
-; Stop log when defogger_trigger == 0
-;conditionrpn = defogger_trigger,0,==
-;action = stop
+{$triggerArray[$_POST['Trigger']]}
 EOT;
 
 function is_operand($who) {
