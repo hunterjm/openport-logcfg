@@ -42,7 +42,7 @@
 	<div class="container">
 		
 		<?php if(isset($_GET['alert'])) : ?>
-		<div class="<?= $_GET['alert']['type'] ?: 'alert' ?>">
+		<div class="alert <?= $_GET['alert']['type'] ?: 'alert-warning' ?>">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<?= $_GET['alert']['msg'] ?>
 		</div>
