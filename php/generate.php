@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: text/plain");
 $ecu = $_POST['ECUID'];
-$ssmcan = ($_POST['Type'] == 'ssmcan');
+$ssmType = $_POST['Type'] == 'ssmcan' ? 'ssmcan' : 'ssmk';
 $Profile = simplexml_load_file($_FILES['Profile']['tmp_name']);
 $defFile = '../misc/loggerdefs/' . $_POST['Definition'];
 if(!file_exists($defFile)) {
@@ -173,7 +173,7 @@ echo <<<EOT
 
 EOT;
 
-echo 'type = ' . ($ssmcan ? 'ssmcan' : 'ssmk') . "\n\n";
+echo 'type = ' . $ssmType . "\n\n";
 
 echo <<<EOT
 ;--------------------LOGGED PARAMETERS--------------------;
