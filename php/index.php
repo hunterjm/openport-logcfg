@@ -83,7 +83,7 @@
 					<label class="control-label">Logging Method</label>
 					<div class="controls">
 						<label class="radio inline"><input type="radio" name="Type" value="ssmk" checked="checked" /> K-Line</label>
-						<label class="radio inline"><input type="radio" name="Type" value="smcan" /> CAN BUS</label>
+						<label class="radio inline"><input type="radio" name="Type" value="ssmcan" /> CAN BUS</label>
 						<span class="help-block">
 							CAN requires 08+ Subarus with the CAN Logging Patch applied in ECUEdit and allows for much faster logging
 						</span>
