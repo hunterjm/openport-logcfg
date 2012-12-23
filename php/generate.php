@@ -1,5 +1,8 @@
 <?php
-header("Content-Type: text/plain");
+// Save file to user's computer
+header("Content-Type: text/plain; charset=utf-8");
+header("Content-Disposition: attachment; filename=logcfg.txt");
+
 $ecu = $_POST['ECUID'];
 $ssmType = $_POST['Type'] == 'ssmcan' ? 'ssmcan' : 'ssmk';
 $Profile = simplexml_load_file($_FILES['Profile']['tmp_name']);
@@ -167,8 +170,8 @@ echo <<<EOT
 ; via either CAN or K-Line.                                       ;
 ;                                                                 ;
 ; @author Jason Hunter                                            ;
-; @since  December 3, 2012                                        ;
-; @see    http://hunterjm.com/logcfg                              ;
+; @since  December 22, 2012                                       ;
+; @see    http://subaru.hunterjm.com/                             ;
 ;-----------------------------------------------------------------;
 
 EOT;
