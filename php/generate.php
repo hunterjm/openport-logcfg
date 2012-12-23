@@ -3,8 +3,15 @@
 header("Content-Type: text/plain; charset=utf-8");
 header("Content-Disposition: attachment; filename=logcfg.txt");
 
+// Set ECU and Log Types
 $ecu = $_POST['ECUID'];
 $ssmType = $_POST['Type'] == 'ssmcan' ? 'ssmcan' : 'ssmk';
+
+// Check to see if DTDs are in tmp dir
+$tmpDir = sys_get_temp_dir();
+if(!file_exists($tmpDir.'profile.dtd')) {
+	copy('../misc/profiles/profile.dtd', $tmpDir.'profile.dtd');
+}
 
 $Validate = new DOMDocument();
 $Validate->load($_FILES['Profile']['tmp_name']);
