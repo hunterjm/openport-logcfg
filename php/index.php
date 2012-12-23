@@ -35,12 +35,6 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="brand" href="#">Subaru OpenPort LogCfg Generator</a>
-				
-					<div class="navbar-form pull-right input-prepend">
-						<span class="add-on" style="margin-top: 5px"><i class="icon-file"></i></span>
-						<input type="file" id="Profile">
-					</div>
-				
 			</div>
 		</div>
 	</div>
