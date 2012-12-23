@@ -129,7 +129,7 @@
 				},
 				error: function(jqXHR, textStatus) {
 					var alert = $('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button>' + textStatus + '</div>');
-					$('#alert-container')
+					$('#alert-container').append(alert);
 				}
 			});
 		});
