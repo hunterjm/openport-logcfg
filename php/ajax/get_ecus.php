@@ -2,7 +2,8 @@
 // Set Logger Def
 $defFile = '../misc/loggerdefs/' . $_POST['Definition'];
 if(!file_exists($defFile)) {
-	report_error('alert-error', 'Logger Definition could not be found');
+	header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+	exit;
 }
 $LoggerDef = simplexml_load_file($defFile);
 
@@ -17,10 +18,10 @@ $ecuArray = array_unique($ecuArray);
 sort($ecuArray);
 
 // 500 on empty array
-if(empty($ecuArray)) {
-	header($_SERVER['SERVER_PROTOCOL'] . ' No ECUs found', true, 500);
-	exit;
-}
+// if(empty($ecuArray)) {
+// 	header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+// 	exit;
+// }
 
 // Send it on back
 echo json_encode($ecuArray);
