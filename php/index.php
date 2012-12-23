@@ -116,6 +116,21 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/bootstrap.js"></script>
+	<script type="text/javascript">
+		$('#Definition').bind('change', function() {
+			$.ajax({
+				url: "ajax/get_ecus.php",
+				type: "POST",
+				data: { Definition: $(this).val() },
+				success: function(data) {
+					//TODO: populate ECUs
+				},
+				error: function() {
+					//TODO: create alert
+				}
+			});
+		});
+	</script>
 	
   </body>
 </html>
