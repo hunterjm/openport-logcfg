@@ -60,7 +60,7 @@
 							<span class="add-on"><i class="icon-folder-open"></i></span>
 							<input type="file" name="Profile" id="Profile" />
 						</div>
-						<span class="help-block">Saved RomRaider Logger profile.xml</span>
+						<span class="help-block">Upload a saved RomRaider Logger profile.xml.</span>
 					</div>
 				</div>
 				<div class="control-group">
@@ -104,7 +104,7 @@
 						<label class="radio inline"><input type="radio" name="Type" value="ssmk" checked="checked" /> K-Line</label>
 						<label class="radio inline"><input type="radio" name="Type" value="ssmcan" /> CAN BUS</label>
 						<span class="help-block">
-							CAN requires 08+ Subarus with the CAN Logging Patch applied in ECUEdit and allows for much faster logging
+							CAN requires 08+ Subarus with the CAN Logging Patch applied in ECUEdit and allows for much faster logging.
 						</span>
 					</div>
 				</div>
