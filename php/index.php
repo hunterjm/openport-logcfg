@@ -102,6 +102,16 @@
 						</span>
 					</div>
 				</div>
+				<div class="control-group">
+					<label class="control-label">Logging Trigger</label>
+					<div class="controls">
+						<label class="radio inline"><input type="radio" name="Trigger" value="defogger" checked="checked" /> Defogger Switch</label>
+						<label class="radio inline"><input type="radio" name="Trigger" value="engine" /> Engine Start/Stop</label>
+						<span class="help-block">
+							What event should trigger a log start/stop event?
+						</span>
+					</div>
+				</div>
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Generate File</button>
 				</div>
@@ -119,27 +129,29 @@
 	<script src="js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$('#Definition').bind('change', function() {
-			var select = $('#ECUID');
-			select.attr('disabled','disabled');
-			select.find('option:not(:first)').remove();
-			$.ajax({
-				url: "ajax/get_ecus.php",
-				type: "POST",
-				dataType: "json",
-				data: { Definition: $(this).val() },
-				success: function(data) {
-					for(var i = 0; i < data.length; i++) {
-						var option = $('<option></option>').html(data[i]);
-						select.append(option);
+			if($(this).val() != "") {
+				var select = $('#ECUID');
+				select.attr('disabled','disabled');
+				select.find('option:not(:first)').remove();
+				$.ajax({
+					url: "ajax/get_ecus.php",
+					type: "POST",
+					dataType: "json",
+					data: { Definition: $(this).val() },
+					success: function(data) {
+						for(var i = 0; i < data.length; i++) {
+							var option = $('<option></option>').html(data[i]);
+							select.append(option);
+						}
+						select.removeAttr('disabled');
+					},
+					error: function(jqXHR) {
+						var alert = $('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button>' + jqXHR.responseText + '</div>');
+						$('#alert-container').append(alert);
+						select.removeAttr('disabled');
 					}
-					select.removeAttr('disabled');
-				},
-				error: function(jqXHR) {
-					var alert = $('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button>' + jqXHR.responseText + '</div>');
-					$('#alert-container').append(alert);
-					select.removeAttr('disabled');
-				}
-			});
+				});
+			}
 		});
 	</script>
 	
