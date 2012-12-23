@@ -374,6 +374,6 @@ function infix_to_postfix($infixStr) {
 }
 
 function report_error($type, $msg) {
-	$errorRef = urlencode('/?alert[type]=' . $type . '&alert[msg]=' . $msg);
+	$errorRef = '/?alert[type]=' . urlencode($type) . '&alert[msg]=' . urlencode($msg));
 	header('Location: ' . $errorRef);
 }
