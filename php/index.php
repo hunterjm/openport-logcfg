@@ -30,28 +30,79 @@
   </head>
 
   <body>
-
+	
 	<div class="navbar navbar-inverse navbar-fixed-top">
-	  <div class="navbar-inner">
-		<div class="container">
-		  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		  </a>
-		  <a class="brand" href="#">Subaru OpenPort LogCfg Generator</a>
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="#">Subaru OpenPort LogCfg Generator</a>
+				
+					<div class="navbar-form pull-right input-prepend">
+						<span class="add-on" style="margin-top: 5px"><i class="icon-file"></i></span>
+						<input type="file" id="Profile">
+					</div>
+				
+			</div>
 		</div>
-	  </div>
 	</div>
 
 	<div class="container">
-
-      <form class="form-upload">
-        <h3 class="form-upload-heading">Upload RomRaider Profile XML</h3>
-        <input type="file" class="input-block-level" placeholder="Profile XML">
-        <button class="btn btn-large btn-primary" type="submit">Upload</button>
-      </form>
-
+		
+		<form class="form-horizontal" enctype="multipart/form-data" method="POST" action="generate.php">
+			<fieldset>
+				<legend>Convert RomRaider Profile to Standalone LogCfg.txt</legend>
+				<div class="control-group">
+					<label class="control-label" for="Profile">RomRaider Profile</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on"><i class="icon-file"></i></span>
+							<input type="file" name="Profile" id="Profile" />
+						</div>
+						<span class="help-block">Saved RomRaider Logger profile.xml</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="Definition">Logger Definition</label>
+					<div class="controls">
+						<select name="Definition" id="Definition">
+							<option value="">-- Pick Logger Definition --</option>
+							<option>logger_IMP_EN_v100.xml</option>
+						</select>
+						<span class="help-block">
+							Which logger definition should be used to generate the file?
+						</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="ECUID">ECU ID</label>
+					<div class="controls">
+						<select name="ECUID" id="ECUID">
+							<option value="">-- Pick ECU --</option>
+							<option>8112585007</option>
+						</select>
+						<span class="help-block">
+							You can find your ECU ID by opening RomRaider Logger when the OpenPort is connected to your car.  
+							It will be in the bottom right corner.
+						</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Logging Method</label>
+					<div class="controls">
+						<label class="radio inline"><input type="radio" name="Type" value="ssmk" checked="checked" /> K-Line</label>
+						<label class="radio inline"><input type="radio" name="Type" value="smcan" /> CAN BUS</label>
+						<span class="help-block">
+							CAN requires 08+ Subarus with the CAN Logging Patch applied in ECUEdit and allows for much faster logging
+						</span>
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Generate File</button>
+				</div>
+			</fieldset>
+		</form>
+					
+		<!-- <textarea style=" width: 100%; height: 500px"></textarea> -->
+		
 	</div> <!-- /container -->
 
 	<!-- Le javascript
