@@ -69,7 +69,7 @@
 							<?php
 								foreach(glob('../misc/loggerdefs/*xml') as $path) {
 									$fileArray = pathinfo($path);
-									echo "<option>{$fileArray['filename']}</option>";
+									echo "<option>{$fileArray['basename']}</option>";
 								}
 							?>
 						</select>
