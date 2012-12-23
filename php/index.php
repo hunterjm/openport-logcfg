@@ -127,8 +127,8 @@
 				success: function(data) {
 					//TODO: populate ECUs
 				},
-				error: function(jqXHR, textStatus) {
-					var alert = $('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button>' + textStatus + '</div>');
+				error: function(jqXHR) {
+					var alert = $('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button>' + jqXHR.responseText + '</div>');
 					$('#alert-container').append(alert);
 				}
 			});
