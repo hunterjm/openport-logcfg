@@ -3,7 +3,11 @@ header("Content-Type: text/plain");
 $ecu = $_POST['ECUID'];
 $ssmcan = ($_POST['Type'] == 'ssmcan');
 $Profile = simplexml_load_file($_FILES['Profile']['tmp_name']);
-$LoggerDef = simplexml_load_file('test_xml/TP_Logger-2012WRX.xml');
+$defFile = '../misc/loggerdefs/' . $_POST['Definition'];
+if(!file_exists($defFile)) {
+	die('Logger Definition could not be found');
+}
+$LoggerDef = simplexml_load_file($defFile);
 
 // store selected parameters
 $SelectedParams = $Profile->xpath("/profile/parameters/parameter[@livedata='selected']");
