@@ -2,7 +2,7 @@
 // Set Logger Def
 $defFile = '../misc/loggerdefs/' . $_POST['Definition'];
 if(!file_exists($defFile)) {
-	echo "Wrong File";
+	echo "Wrong File: {$_POST['Definition']}";
 // 	header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
 // 	exit;
 }
