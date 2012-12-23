@@ -7,8 +7,8 @@ $ecu = $_POST['ECUID'];
 $ssmType = $_POST['Type'] == 'ssmcan' ? 'ssmcan' : 'ssmk';
 $Profile = simplexml_load_file($_FILES['Profile']['tmp_name']);
 $defFile = '../misc/loggerdefs/' . $_POST['Definition'];
-if(!file_exists($defFile)) {
-	die('Logger Definition could not be found');
+if(file_exists($defFile)) {
+	report_error('alert-error', 'Logger Definition could not be found');
 }
 $LoggerDef = simplexml_load_file($defFile);
 
@@ -371,4 +371,8 @@ function infix_to_postfix($infixStr) {
 
 	return implode('', $postfixStr);
 
+}
+
+function report_error($type, $msg) {
+	header('Location: /?alert[type]=' . $type . '&msg=' . $msg);
 }
