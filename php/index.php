@@ -57,7 +57,7 @@
 					<label class="control-label" for="Profile">RomRaider Profile</label>
 					<div class="controls">
 						<div class="input-prepend">
-							<span class="add-on"><i class="icon-file"></i></span>
+							<span class="add-on"><i class="icon-folder-open"></i></span>
 							<input type="file" name="Profile" id="Profile" />
 						</div>
 						<span class="help-block">Saved RomRaider Logger profile.xml</span>
@@ -66,15 +66,18 @@
 				<div class="control-group">
 					<label class="control-label" for="Definition">Logger Definition</label>
 					<div class="controls">
-						<select name="Definition" id="Definition">
-							<option value="">-- Pick Logger Definition --</option>
-							<?php
-								foreach(glob('../misc/loggerdefs/*xml') as $path) {
-									$fileArray = pathinfo($path);
-									echo "<option>{$fileArray['basename']}</option>";
-								}
-							?>
-						</select>
+						<div class="input-prepend">
+							<span class="add-on"><i class="icon-file"></i></span>
+							<select name="Definition" id="Definition">
+								<option value="">-- Pick Logger Definition --</option>
+								<?php
+									foreach(glob('../misc/loggerdefs/*xml') as $path) {
+										$fileArray = pathinfo($path);
+										echo "<option>{$fileArray['basename']}</option>";
+									}
+								?>
+							</select>
+						</div>
 						<span class="help-block">
 							Which logger definition should be used to generate the file?
 						</span>
@@ -83,9 +86,12 @@
 				<div class="control-group">
 					<label class="control-label" for="ECUID">ECU ID</label>
 					<div class="controls">
-						<select name="ECUID" id="ECUID">
-							<option value="">-- Pick ECU --</option>
-						</select>
+						 <div class="input-prepend">
+							<span class="add-on"><i class="icon-cog"></i></span>
+							<select name="ECUID" id="ECUID">
+								<option value="">-- Pick ECU --</option>
+							</select>
+						</div>
 						<span class="help-block">
 							You can find your ECU ID by opening RomRaider Logger when the OpenPort is connected to your car.  
 							It will be in the bottom right corner.
