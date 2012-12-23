@@ -5,9 +5,17 @@ header("Content-Disposition: attachment; filename=logcfg.txt");
 
 $ecu = $_POST['ECUID'];
 $ssmType = $_POST['Type'] == 'ssmcan' ? 'ssmcan' : 'ssmk';
+
+$Validate = new DOMDocument();
+$Validate->load($_FILES['Profile']['tmp_name']);
+if(!$Validate->validate()) {
+	report_error('alert-error', 'The file chosen is not a valid RomRaider Profile.');
+}
+
 $Profile = simplexml_load_file($_FILES['Profile']['tmp_name']);
+
 $defFile = '../misc/loggerdefs/' . $_POST['Definition'];
-if(file_exists($defFile)) {
+if(!file_exists($defFile)) {
 	report_error('alert-error', 'Logger Definition could not be found');
 }
 $LoggerDef = simplexml_load_file($defFile);
