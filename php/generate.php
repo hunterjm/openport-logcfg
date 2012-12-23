@@ -7,20 +7,10 @@ header("Content-Disposition: attachment; filename=logcfg.txt");
 $ecu = $_POST['ECUID'];
 $ssmType = $_POST['Type'] == 'ssmcan' ? 'ssmcan' : 'ssmk';
 
-// Check to see if DTDs are in tmp dir
-$tmpDir = sys_get_temp_dir();
-if(!file_exists($tmpDir.'profile.dtd')) {
-	copy('../misc/profiles/profile.dtd', $tmpDir.'profile.dtd');
-}
-
-$Validate = new DOMDocument();
-$Validate->load($_FILES['Profile']['tmp_name']);
-if(!$Validate->validate()) {
-	report_error('alert-error', 'The file chosen is not a valid RomRaider Profile.');
-}
-
+// Set Profile
 $Profile = simplexml_load_file($_FILES['Profile']['tmp_name']);
 
+// Set Logger Def
 $defFile = '../misc/loggerdefs/' . $_POST['Definition'];
 if(!file_exists($defFile)) {
 	report_error('alert-error', 'Logger Definition could not be found');
