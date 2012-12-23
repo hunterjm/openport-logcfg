@@ -125,6 +125,7 @@
 			$.ajax({
 				url: "ajax/get_ecus.php",
 				type: "POST",
+				dataType: "json",
 				data: { Definition: $(this).val() },
 				success: function(data) {
 					for(var i = 0; i < data.length; i++) {
