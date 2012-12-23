@@ -85,7 +85,6 @@
 					<div class="controls">
 						<select name="ECUID" id="ECUID">
 							<option value="">-- Pick ECU --</option>
-							<option>8112585007</option>
 						</select>
 						<span class="help-block">
 							You can find your ECU ID by opening RomRaider Logger when the OpenPort is connected to your car.  
@@ -120,16 +119,24 @@
 	<script src="js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$('#Definition').bind('change', function() {
+			var select = $('#ECUID');
+			select.attr('disabled','disabled');
+			select.find('option:not(:first)').remove();
 			$.ajax({
 				url: "ajax/get_ecus.php",
 				type: "POST",
 				data: { Definition: $(this).val() },
 				success: function(data) {
-					//TODO: populate ECUs
+					for(var i = 0; i < data.length; i++) {
+						var option = $('<option></option>').html(data[i]);
+						select.append(option);
+					}
+					select.removeAttr('disabled');
 				},
 				error: function(jqXHR) {
 					var alert = $('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button>' + jqXHR.responseText + '</div>');
 					$('#alert-container').append(alert);
+					select.removeAttr('disabled');
 				}
 			});
 		});
