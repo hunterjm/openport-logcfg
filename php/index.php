@@ -67,8 +67,9 @@
 						<select name="Definition" id="Definition">
 							<option value="">-- Pick Logger Definition --</option>
 							<?php
-								foreach(glob('../misc/loggerdefs/*xml') as $filename) {
-									echo "<option>$filename</option>";
+								foreach(glob('../misc/loggerdefs/*xml') as $path) {
+									$fileArray = pathinfo($path);
+									echo "<option>{$fileArray['filename']}</option>";
 								}
 							?>
 						</select>
