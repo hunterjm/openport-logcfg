@@ -18,7 +18,7 @@ sort($ecuArray);
 
 // 500 on empty array
 if(empty($ecuArray)) {
-	header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+	header($_SERVER['SERVER_PROTOCOL'] . ' No ECUs found', true, 500);
 	exit;
 }
 
