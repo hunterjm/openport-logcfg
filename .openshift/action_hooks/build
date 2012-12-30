@@ -4,5 +4,5 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 echo Moving files from /public to /php...
-#rm -rf $OPENSHIFT_REPO_DIRphp/*
-#cp -r $OPENSHIFT_REPO_DIRpublic/* $OPENSHIFT_REPO_DIRphp/
+rm -rf $OPENSHIFT_REPO_DIR/php/*
+cp -r $OPENSHIFT_REPO_DIR/public/* $OPENSHIFT_REPO_DIR/php/
