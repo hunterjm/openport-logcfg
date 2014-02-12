@@ -12,7 +12,7 @@ $LoggerDef = simplexml_load_file($defFile);
 $ecuArray = array();
 $tmpArray = $LoggerDef->xpath('//ecuparam/ecu/@id');
 foreach($tmpArray as $value) {
-	$ecuArray = array_merge($ecuArray, explode(',', (string)$value));
+	$ecuArray = array_unique(array_merge($ecuArray, explode(',', (string)$value)));
 }
 
 // Get sorted, unique IDs
