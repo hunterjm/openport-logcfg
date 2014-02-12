@@ -132,7 +132,7 @@ foreach($selectedArray as $id => $units) {
 
 	if($id[0] == 'E') {
 
-		$EcuAddress = $LoggerParam->xpath("ecu[@id='{$ecu}']");
+		$EcuAddress = $LoggerParam->xpath("ecu[contains(@id,'{$ecu}')]");
 		$EcuAddress = current($EcuAddress);
 
 		// Check if there is an address
