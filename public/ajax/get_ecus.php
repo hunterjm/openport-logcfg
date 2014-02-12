@@ -14,7 +14,7 @@ $tmpArray = $LoggerDef->xpath('//ecuparam/ecu/@id');
 foreach($tmpArray as $value) {
 	// Get Unique IDs
 	$value = (string) $value;
-	if(strpos(',', $value) === false) {
+	if(strpos($value, ',') === false) {
 		$ecuArray[] = $value;
 	} else {
 		$ecuArray = array_merge($ecuArray, explode(',', $value));
