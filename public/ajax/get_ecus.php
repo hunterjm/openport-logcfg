@@ -15,14 +15,17 @@ foreach($tmpArray as $value) {
 	// Get Unique IDs
 	$value = (string) $value;
 	if(strpos($value, ',') === false) {
-		$ecuArray[] = $value;
+		$ecuArray[$value]++;
 	} else {
-		$ecuArray = array_merge($ecuArray, explode(',', $value));
+		$ids = explode(',', $value);
+		foreach ($ids as $id) {
+			$ecuArray[$id]++;
+		}
 	}
 }
 
 // Get sorted, unique IDs
-$ecuArray = array_unique($ecuArray);
+$ecuArray = array_keys($ecuArray);
 sort($ecuArray);
 
 // 500 on empty array
