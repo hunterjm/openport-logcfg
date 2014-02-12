@@ -9,10 +9,11 @@ if(!file_exists($defFile)) {
 $LoggerDef = simplexml_load_file($defFile);
 
 // Find our ECU IDs
-$ecuArray = $LoggerDef->xpath('//ecuparam/ecu/@id');
-array_walk($ecuArray, function(&$value, $key) {
-	$value = (string) $value;
-});
+$ecuArray = array();
+$tmpArray = $LoggerDef->xpath('//ecuparam/ecu/@id');
+foreach($tmpArray as $value) {
+	$ecuArray += explode(',', (string)$value);
+}
 
 // Get sorted, unique IDs
 $ecuArray = array_unique($ecuArray);
