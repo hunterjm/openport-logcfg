@@ -1,7 +1,7 @@
 <?php
 // Save file to user's computer
-header("Content-Type: text/plain; charset=utf-8");
-header("Content-Disposition: attachment; filename=logcfg.txt");
+header('Content-type: text/plain; charset=utf-8');
+header('Content-Disposition: attachment; filename="logcfg.txt"');
 
 // Set ECU and Log Types
 $ecu = $_POST['ECUID'];
