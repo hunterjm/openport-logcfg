@@ -8,7 +8,11 @@ $ecu = $_POST['ECUID'];
 $ssmType = $_POST['Type'] == 'ssmcan' ? 'ssmcan' : 'ssmk';
 
 // Set Profile
-$Profile = simplexml_load_file($_FILES['Profile']['tmp_name']);
+$Profile = @simplexml_load_file($_FILES['Profile']['tmp_name']);
+
+if(!$Profile) {
+	report_error('alert-error', 'Invalid Logging Profile');
+}
 
 // Set Logger Def
 $defFile = '../misc/loggerdefs/' . $_POST['Definition'];
